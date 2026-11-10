@@ -1,0 +1,163 @@
+
+import 'package:flutter/material.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const SmartVisionReader());
+}
+
+class SmartVisionReader extends StatelessWidget {
+  const SmartVisionReader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Smart Vision Reader',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF1565C0),
+          brightness: Brightness.light,
+        ),
+        scaffoldBackgroundColor: const Color(0xFFF4F7FC),
+      ),
+      home: const HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF1565C0),
+        foregroundColor: Colors.white,
+        title: const Text(
+          'Smart Vision Reader',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 20),
+              const Icon(
+                Icons.visibility,
+                size: 85,
+                color: Color(0xFF1565C0),
+              ),
+              const SizedBox(height: 12),
+              const Text(
+                'स्मार्ट विजन रीडर में आपका स्वागत है',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF17365D),
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'पढ़ने और डिजिटल जानकारी तक पहुँचने में सहायता',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 30),
+              _featureCard(
+                icon: Icons.menu_book,
+                title: 'टेक्स्ट रीडर',
+                subtitle: 'पाठ पढ़ने की सुविधा',
+                onTap: () => _showMessage(context, 'टेक्स्ट रीडर'),
+              ),
+              _featureCard(
+                icon: Icons.record_voice_over,
+                title: 'वॉइस असिस्टेंट',
+                subtitle: 'आवाज आधारित सहायता',
+                onTap: () => _showMessage(context, 'वॉइस असिस्टेंट'),
+              ),
+              _featureCard(
+                icon: Icons.security,
+                title: 'सुरक्षा जाँच',
+                subtitle: 'एप्लिकेशन की सुरक्षा सुविधाएँ',
+                onTap: () => _showMessage(context, 'सुरक्षा जाँच'),
+              ),
+              _featureCard(
+                icon: Icons.verified_user,
+                title: 'UDID सत्यापन',
+                subtitle: 'पात्र दृष्टिबाधित विद्यार्थियों के लिए',
+                onTap: () => _showMessage(context, 'UDID सत्यापन'),
+              ),
+              _featureCard(
+                icon: Icons.privacy_tip,
+                title: 'गोपनीयता सेटिंग्स',
+                subtitle: 'निजी जानकारी की सुरक्षा',
+                onTap: () => _showMessage(context, 'गोपनीयता सेटिंग्स'),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'आपकी गोपनीयता और सुरक्षा हमारी प्राथमिकता है।',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF455A64),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _featureCard({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+  }) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 14),
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 18,
+          vertical: 12,
+        ),
+        leading: Icon(
+          icon,
+          size: 35,
+          color: const Color(0xFF1565C0),
+        ),
+        title: Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 17,
+          ),
+        ),
+        subtitle: Text(subtitle),
+        trailing: const Icon(Icons.arrow_forward_ios, size: 18),
+        onTap: onTap,
+      ),
+    );
+  }
+
+  void _showMessage(BuildContext context, String feature) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('$feature की सुविधा अभी निर्माणाधीन है।'),
+      ),
+    );
+  }
+}
