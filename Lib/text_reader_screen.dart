@@ -1,5 +1,5 @@
 
-import 'package:flutter/material.dart';
+lib/text_reader_screen.dartimport 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class TextReaderScreen extends StatefulWidget {
