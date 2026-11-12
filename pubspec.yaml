@@ -12,11 +12,27 @@ environment:
 
 dependencies:
   flutter:
-    sdk: flutte flutter_tts: ^4.2.3  file_picker: ^8.1.7
+    sdk: 
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_tts: ^4.2.3
+  file_picker: ^8.1.7
   path_provider: ^2.1.5
-  flutter_pdf_text: ^0.9.0 pdfx: ^2.11.0
-  google_mlkit_text_recognition: ^0.17.1 epubx: ^4.0.0
-html: ^0.15.6
+
+  flutter_pdf_text: ^0.9.0
+  pdfx: ^2.11.0
+
+  epubx: ^4.0.0
+  html: ^0.15.6
+
+  camera: ^0.11.0+2
+  google_mlkit_text_recognition: ^0.17.1
+
+  permission_handler: ^12.0.1
+  cupertino_icons: ^1.0.8
+  
 
   # Camera functionality
   camera: ^0.11.0+2
