@@ -1,1 +1,65 @@
 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- इंटरनेट की अनुमति -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- माइक्रोफोन की अनुमति -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- कैमरे की अनुमति -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- कैमरा और माइक्रोफोन वैकल्पिक सुविधाएँ हैं -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <!-- Android Speech Recognition Service -->
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+
+    <application
+        android:name="${applicationName}"
+        android:label="Smart Vision Reader"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <!-- Flutter का सामान्य थीम -->
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+
+            <!-- ऐप का मुख्य लॉन्चर -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- Flutter Android Embedding -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
+    </application>
+
+</manifest>
+
